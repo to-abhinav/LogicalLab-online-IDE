@@ -13,7 +13,9 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as codeExecutions from "../codeExecutions.js";
 import type * as http from "../http.js";
+import type * as snippets from "../snippets.js";
 import type * as user from "../user.js";
 
 /**
@@ -25,7 +27,9 @@ import type * as user from "../user.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  codeExecutions: typeof codeExecutions;
   http: typeof http;
+  snippets: typeof snippets;
   user: typeof user;
 }>;
 export declare const api: FilterApi<
