@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 LogicalLab - Your Smart Online IDE
 
-## Getting Started
+LogicalLab is a powerful, customizable, and community-driven **online IDE** built with modern technologies. Designed for both casual coders and power users, it offers a sleek interface, intelligent output handling, and rich personal analytics.
 
-First, run the development server:
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.js-15-blue?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Convex](https://img.shields.io/badge/Convex-Database-orange)](https://convex.dev/)
 
+## 🚀 Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Database**: [Convex](https://convex.dev/)
+- **Auth**: [Clerk](https://clerk.dev/)
+- **Runtime**: [Piston API](https://github.com/engineer-man/piston)
+- **Payments**: [Lemon Squeezy](https://www.lemonsqueezy.com/)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+
+---
+
+## ✨ Features
+
+### 💻 Multi-language Support
+Supports **10+ programming languages** (Pro users) and **JavaScript** (Free users).
+
+### 🎨 VSCode Theme Customization
+Switch between **5 stunning editor themes** for a personalized coding experience.
+
+### 🔐 Authentication System
+Built with **Clerk** to handle secure sign-ups, logins, and webhooks.
+
+### 🤝 Code Sharing System
+Share your code snippets publicly with the community via smart sharing links.
+
+### 📊 Personal Profile & Stats Dashboard
+Visualize your:
+- Execution history
+- Starred/public snippets
+- Language usage and more!
+
+### ⚙️ Customization
+- Font size controls
+- Editor preferences
+- UI layout options
+
+### 🔍 Advanced Search & Filters
+Quickly find snippets, users, or languages with powerful filtering.
+
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+- Convex account
+- Clerk account
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/to-abhinav/logical-lab.git
+cd logical-lab
 ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables:
+   ```.env
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+   CLERK_SECRET_KEY=
+   CONVEX_DEPLOYMENT=
+   CLERK_WEBHOOK_SECRET=
+   LEMON_SQUEEZY_WEBHOOK_SECRET=
+   NEXT_PUBLIC_CONVEX_URL=
+   ```
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# For any Queries Feel free to reach out 
+- [**Linkedin**](https://www.linkedin.com/in/to-abhinav/)
