@@ -82,5 +82,7 @@ cd logical-lab
    npm run dev
    ```
 
-# For any Queries Feel free to reach out 
-- [**Linkedin**](https://www.linkedin.com/in/to-abhinav/)
+## 📬 Questions?  
+[<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="20"/>](https://www.linkedin.com/in/to-abhinav/)  
+Connect on [**LinkedIn**](https://www.linkedin.com/in/to-abhinav/)
+
