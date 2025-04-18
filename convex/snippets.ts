@@ -94,50 +94,53 @@ export const getComments = query({
       .order("desc")
       .collect();
 
-      return comments;
+    return comments;
   },
 });
 
 export const addComment = mutation({
-  args:{
+  args: {
     snippetId: v.id("snippets"),
     content: v.string(),
   },
-  handler: async(ctx, args)=>{
-    const identity= await ctx.auth.getUserIdentity();
-    if(!identity) throw new Error("Unauthorized: User is not authenticated")
-    
-    const user = await ctx.db.query("users").withIndex("by_user_id").filter((q)=>q.eq(q.field("userId"), identity.subject)).first();
-    if(!user) throw new Error("User not found")
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Unauthorized: User is not authenticated");
 
-    return await ctx.db.insert("snippetComments",{
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_user_id")
+      .filter((q) => q.eq(q.field("userId"), identity.subject))
+      .first();
+    if (!user) throw new Error("User not found");
+
+    return await ctx.db.insert("snippetComments", {
       snippetId: args.snippetId,
       userId: identity.subject,
       userName: user.name,
       content: args.content,
-    })
-  }
-})
+    });
+  },
+});
 
 export const deleteComment = mutation({
-  args:{
+  args: {
     commentId: v.id("snippetComments"),
   },
-  handler: async(ctx, args)=>{
-    const identity= await ctx.auth.getUserIdentity();
-    if(!identity) throw new Error("Unauthorized: User is not authenticated")
-    
-    const comment = await ctx.db.get(args.commentId);
-    if(!comment) throw new Error("Comment not found")
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Unauthorized: User is not authenticated");
 
-    if(comment.userId !== identity.subject) {
+    const comment = await ctx.db.get(args.commentId);
+    if (!comment) throw new Error("Comment not found");
+
+    if (comment.userId !== identity.subject) {
       throw new Error("You are not authorized to delete this comment");
     }
 
     await ctx.db.delete(args.commentId);
-
-  }
-})
+  },
+});
 
 export const starSnippet = mutation({
   args: {
@@ -202,6 +205,24 @@ export const isSnippetStarred = query({
   },
 });
 
+export const getStarredSnippets = query({
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return [];
+
+    const stars = await ctx.db
+      .query("stars")
+      .withIndex("by_user_id")
+      .filter((q) => q.eq(q.field("userId"), identity.subject))
+      .collect();
+
+    const snippets = await Promise.all(
+      stars.map((star) => ctx.db.get(star.snippetId))
+    );
+
+    return snippets.filter((snippet) => snippet !== null);
+  },
+});
 export const getSnippetStarCount = query({
   args: { snippetId: v.id("snippets") },
   handler: async (ctx, args) => {
